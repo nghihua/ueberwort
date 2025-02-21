@@ -7,12 +7,12 @@
   "homepage_url": "https://github.com/cschiller/zhongwen",
   "description": "Great tool for learning German. Includes links to German Grammar Wiki. Supports adding words to Skritter.",
   "icons": {
-    "16": "images/zhongwen16.png",
-    "48": "images/zhongwen48.png",
-    "128": "images/zhongwen.png"
+    "16": "images/ueberwort16.png",
+    "48": "images/ueberwort48.png",
+    "128": "images/ueberwort128.png"
   },
   "browser_action": {
-    "default_icon": "images/zhongwen48.png",
+    "default_icon": "images/ueberwort48.png",
     "default_title": "Überwort German Popup Dictionary"
   },
   "background": {
@@ -20,17 +20,9 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "js/jquery-3.3.1.min.js",
-        "js/zhuyin.js",
-        "content.js"
-      ],
-      "css": [
-        "css/content.css"
-      ],
+      "matches": ["<all_urls>"],
+      "js": ["js/jquery-3.3.1.min.js", "js/zhuyin.js", "content.js"],
+      "css": ["css/content.css"],
       "all_frames": true
     }
   ],
@@ -38,18 +30,11 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "permissions": [
-    "contextMenus",
-    "tabs"
-  ],
+  "permissions": ["contextMenus", "tabs"],
   "commands": {
     "_execute_browser_action": {
       "description": "Enable/Disable Überwort"
     }
   },
-  "web_accessible_resources": [
-    "css/*",
-    "js/*",
-    "images/*"
-  ]
+  "web_accessible_resources": ["css/*", "js/*", "images/*"]
 }

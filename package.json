@@ -1,6 +1,6 @@
 {
   "name": "ueberwort",
-  "version": "5.15.0",
+  "version": "0.0.1",
   "description": "German Pop-Up Dictionary",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
     "German",
     "Dictionary"
   ],
-  "author": "Christian Schiller",
+  "author": "Nghi Hua",
   "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/cschiller/zhongwen/issues"
