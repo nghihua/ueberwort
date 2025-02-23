@@ -97,9 +97,11 @@ export class GermanDictionary {
   // when a word is not found, attempt to split the word
   // to search its small part
   splitWord(word) {
-    if (word.includes('-')) return word.split('-');
-    if (word.includes('.')) return word.split('.');
-    return [word.substr(0, word.length - 1)];
+    const text = word.text;
+    if (text.includes('-')) return text.split('-');
+    if (text.includes('.')) return text.split('.');
+    if (word.reverse) return [text.substr(1)];
+    return [text.substr(0, text.length - 1)];
   }
 
   wordSearch(word, max) {
@@ -118,6 +120,7 @@ export class GermanDictionary {
       {
         text: word,
         atomic: false,
+        reverse: false,
       },
     ];
 
@@ -133,7 +136,7 @@ export class GermanDictionary {
         ix = GermanDictionary.find(wordText.toLowerCase() + ',', index);
         if (!ix) {
           if (!wordData.atomic) {
-            const splitWords = this.splitWord(wordText).filter((w) => w.trim());
+            const splitWords = this.splitWord(wordData).filter((w) => w.trim());
             if (splitWords.length > 1) {
               split = true;
             }
@@ -141,16 +144,29 @@ export class GermanDictionary {
               ...splitWords.map((w) => ({
                 text: w,
                 atomic: false,
+                reverse: wordData.reverse ?? false,
               }))
             );
           }
           continue;
+        }
+
+        if (!wordData.reverse && wordText.length < word.length) {
+          words.unshift({
+            text: word.slice(word.indexOf(wordText) + wordText.length),
+            atomic: false,
+            reverse: true,
+          });
         }
         ix = ix.split(',');
         this.cache[wordText] = ix;
       }
 
       let parsedDEntry = null;
+
+      if (wordData.reverse) {
+        split = true;
+      }
 
       for (let j = 1; j < ix.length; ++j) {
         let offset = ix[j];
@@ -181,6 +197,7 @@ export class GermanDictionary {
             words.unshift({
               text: parsedDEntry.form_of,
               atomic: true,
+              reverse: false,
             });
           }
         } catch (err) {}
