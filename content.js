@@ -162,9 +162,8 @@ function onKeyDown(keyDown) {
       {
         let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://tatoeba.org/eng/sentences/search?from=cmn&to=eng&query=%E8%BF%9B%E8%A1%8C
         let tatoeba =
-          'https://tatoeba.org/eng/sentences/search?from=cmn&to=eng&query=' +
+          'https://tatoeba.org/eng/sentences/search?from=deu&to=eng&query=' +
           sel;
 
         chrome.runtime.sendMessage({
@@ -259,7 +258,7 @@ function onKeyDown(keyDown) {
 
         chrome.runtime.sendMessage({
           type: 'open',
-          tabType: 'iciba',
+          tabType: 'cambridge',
           url: cambridge,
         });
       }
@@ -269,15 +268,12 @@ function onKeyDown(keyDown) {
       if (keyDown.altKey) {
         let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=0&wdqb=%E4%B8%AD%E6%96%87
-        let mdbg =
-          'https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=0&wdqb=' +
-          sel;
+        let google = `https://translate.google.com/?sl=de&tl=en&text=${sel}&op=translate`;
 
         chrome.runtime.sendMessage({
           type: 'open',
-          tabType: 'mdbg',
-          url: mdbg,
+          tabType: 'google',
+          url: google,
         });
       }
       break;
