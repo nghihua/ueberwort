@@ -18,24 +18,9 @@ function loadVals() {
     `input[name="popupColor"][value="${popupColor}"]`
   ).checked = true;
 
-  const toneColors = localStorage['tonecolors'] || 'yes';
-  if (toneColors === 'no') {
-    document.querySelector('#toneColorsNone').checked = true;
-  } else {
-    const toneColorScheme = localStorage['toneColorScheme'] || 'standard';
-    document.querySelector(
-      `input[name="toneColors"][value="${toneColorScheme}"]`
-    ).checked = true;
-  }
-
   const fontSize = localStorage['fontSize'] || 'small';
   document.querySelector(
     `input[name="fontSize"][value="${fontSize}"]`
-  ).checked = true;
-
-  const simpTrad = localStorage['simpTrad'] || 'classic';
-  document.querySelector(
-    `input[name="simpTrad"][value="${simpTrad}"]`
   ).checked = true;
 
   const grammar = localStorage['grammar'] || 'yes';
@@ -55,15 +40,6 @@ function setPopupColor(popupColor) {
   chrome.extension.getBackgroundPage().zhongwenOptions.css = popupColor;
 }
 
-function setToneColorScheme(toneColorScheme) {
-  if (toneColorScheme === 'none') {
-    setOption('tonecolors', 'no');
-  } else {
-    setOption('tonecolors', 'yes');
-    setOption('toneColorScheme', toneColorScheme);
-  }
-}
-
 function setOption(option, value) {
   localStorage[option] = value;
   chrome.extension.getBackgroundPage().zhongwenOptions[option] = value;
@@ -81,21 +57,9 @@ window.addEventListener('load', () => {
     );
   });
 
-  document.querySelectorAll('input[name="toneColors"]').forEach((input) => {
-    input.addEventListener('change', () =>
-      setToneColorScheme(input.getAttribute('value'))
-    );
-  });
-
   document.querySelectorAll('input[name="fontSize"]').forEach((input) => {
     input.addEventListener('change', () =>
       setOption('fontSize', input.getAttribute('value'))
-    );
-  });
-
-  document.querySelectorAll('input[name="simpTrad"]').forEach((input) => {
-    input.addEventListener('change', () =>
-      setOption('simpTrad', input.getAttribute('value'))
     );
   });
 

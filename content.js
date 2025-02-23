@@ -518,13 +518,7 @@ function processSearchResult(result) {
   }
 
   console.log('process Search result', result);
-  showPopup(
-    makeHtml(result, config.tonecolors !== 'no'),
-    savedTarget,
-    popX,
-    popY,
-    false
-  );
+  showPopup(makeHtml(result), savedTarget, popX, popY, false);
 }
 
 // modifies selEndList as a side-effect
@@ -590,7 +584,7 @@ function showPopup(html, elem, x, y, looseWidth) {
   popup.style.width = 'auto';
   popup.style.height = 'auto';
   popup.style.maxWidth = looseWidth ? '' : '600px';
-  popup.className = `background-${config.css} tonecolor-${config.toneColorScheme}`;
+  popup.className = `background-${config.css}`;
 
   $(popup).html(html);
 

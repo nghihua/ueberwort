@@ -63,11 +63,7 @@ let dict;
 
 let zhongwenOptions = (window.zhongwenOptions = {
   css: localStorage['popupcolor'] || 'yellow',
-  tonecolors: localStorage['tonecolors'] || 'yes',
   fontSize: localStorage['fontSize'] || 'small',
-  zhuyin: localStorage['zhuyin'] || 'no',
-  simpTrad: localStorage['simpTrad'] || 'classic',
-  toneColorScheme: localStorage['toneColorScheme'] || 'standard',
 });
 
 function activateExtension(tabId, showHelp) {
