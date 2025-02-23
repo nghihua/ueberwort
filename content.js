@@ -96,7 +96,7 @@ function disableTab() {
   document.removeEventListener('mousemove', onMouseMove);
   document.removeEventListener('keydown', onKeyDown);
 
-  let popup = document.getElementById('zhongwen-window');
+  let popup = document.getElementById('ueberwort-window');
   if (popup) {
     popup.parentNode.removeChild(popup);
   }
@@ -324,7 +324,7 @@ function onMouseMove(mouseMove) {
     mouseMove.target.nodeName === 'INPUT' ||
     mouseMove.target.nodeName === 'DIV'
   ) {
-    let div = document.getElementById('zhongwenDiv');
+    let div = document.getElementById('ueberwortDiv');
 
     if (mouseMove.altKey) {
       if (
@@ -573,11 +573,11 @@ function showPopup(html, elem, x, y, looseWidth) {
     x = y = 0;
   }
 
-  let popup = document.getElementById('zhongwen-window');
+  let popup = document.getElementById('ueberwort-window');
 
   if (!popup) {
     popup = document.createElement('div');
-    popup.setAttribute('id', 'zhongwen-window');
+    popup.setAttribute('id', 'ueberwort-window');
     document.documentElement.appendChild(popup);
   }
 
@@ -679,7 +679,7 @@ function showPopup(html, elem, x, y, looseWidth) {
 }
 
 function hidePopup() {
-  let popup = document.getElementById('zhongwen-window');
+  let popup = document.getElementById('ueberwort-window');
   if (popup) {
     popup.style.display = 'none';
     popup.textContent = '';
@@ -730,14 +730,14 @@ function clearHighlight() {
 }
 
 function isVisible() {
-  let popup = document.getElementById('zhongwen-window');
+  let popup = document.getElementById('ueberwort-window');
   return popup && popup.style.display !== 'none';
 }
 
 function makeDiv(input) {
   let div = document.createElement('div');
 
-  div.id = 'zhongwenDiv';
+  div.id = 'ueberwortDiv';
 
   let text;
   if (input.value) {
@@ -872,7 +872,7 @@ function parse(s) {
 }
 
 let miniHelp = `
-    <span style="font-weight: bold;">Zhongwen Chinese-English Dictionary</span><br><br>
+    <span style="font-weight: bold;">Überwort Chinese-English Dictionary</span><br><br>
     <p>Keyboard shortcuts:<p>
     <table style="margin: 10px;" cellspacing=5 cellpadding=5>
     <tr><td><b>n&nbsp;:</b></td><td>&nbsp;Next word</td></tr>

@@ -61,7 +61,7 @@ let tabIDs = {};
 
 let dict;
 
-let zhongwenOptions = (window.zhongwenOptions = {
+let ueberwortOptions = (window.ueberwortOptions = {
   css: localStorage['popupcolor'] || 'yellow',
   fontSize: localStorage['fontSize'] || 'small',
 });
@@ -79,7 +79,7 @@ function activateExtension(tabId, showHelp) {
 
   chrome.tabs.sendMessage(tabId, {
     type: 'enable',
-    config: zhongwenOptions,
+    config: ueberwortOptions,
   });
 
   if (showHelp) {
@@ -222,7 +222,7 @@ function enableTab(tabId) {
 
     chrome.tabs.sendMessage(tabId, {
       type: 'enable',
-      config: zhongwenOptions,
+      config: ueberwortOptions,
     });
   }
 }

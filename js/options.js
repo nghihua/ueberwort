@@ -37,12 +37,12 @@ function loadVals() {
 
 function setPopupColor(popupColor) {
   localStorage['popupcolor'] = popupColor;
-  chrome.extension.getBackgroundPage().zhongwenOptions.css = popupColor;
+  chrome.extension.getBackgroundPage().ueberwortOptions.css = popupColor;
 }
 
 function setOption(option, value) {
   localStorage[option] = value;
-  chrome.extension.getBackgroundPage().zhongwenOptions[option] = value;
+  chrome.extension.getBackgroundPage().ueberwortOptions[option] = value;
 }
 
 function setBooleanOption(option, value) {

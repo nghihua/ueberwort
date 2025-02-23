@@ -1,5 +1,6 @@
 /* Generic Styles */
-#zhongwen-window, #zhongwen-window * {
+#ueberwort-window,
+#ueberwort-window * {
   width: auto;
   height: auto;
   background: transparent;
@@ -20,7 +21,7 @@
   line-height: initial;
 }
 
-#zhongwen-window {
+#ueberwort-window {
   position: absolute;
   z-index: 999999999;
   border: 1px solid #d0d0d0 !important;
@@ -33,211 +34,208 @@
   box-shadow: 10px 10px 5px -5px #999999;
 }
 
-#zhongwen-window .w-word {
+#ueberwort-window .w-word {
   font-size: 32px;
   margin-right: 0.7em;
 }
 
-#zhongwen-window li {
+#ueberwort-window li {
   margin-inline-start: 24px;
 }
 
-#zhongwen-window .w-pinyin {
+#ueberwort-window .w-pinyin {
   font-size: 18px;
 }
 
-#zhongwen-window .w-def {
+#ueberwort-window .w-def {
   font-size: 16px;
 }
 
-#zhongwen-window .w-zhuyin {
+#ueberwort-window .w-zhuyin {
   font-family: PMingLiU, 'Apple LiGothic', sans-serif;
   font-size: 16px;
 }
 
-#zhongwen-window .w-hanzi-small {
+#ueberwort-window .w-hanzi-small {
   font-size: 18px;
   margin-right: 0.7em;
 }
 
-#zhongwen-window .w-pinyin-small {
+#ueberwort-window .w-pinyin-small {
   font-size: 16px;
 }
 
-#zhongwen-window .w-def-small {
+#ueberwort-window .w-def-small {
   font-size: 12px;
 }
 
-#zhongwen-window .w-zhuyin-small {
+#ueberwort-window .w-zhuyin-small {
   font-family: PMingLiU, 'Apple LiGothic', sans-serif;
   font-size: 12px;
 }
 
-#zhongwen-window .grammar {
+#ueberwort-window .grammar {
   font-weight: bold;
 }
 
-#zhongwen-window .vocab {
+#ueberwort-window .vocab {
   font-weight: bold;
 }
 
 /* Yellow Background */
-#zhongwen-window.background-yellow,
-#zhongwen-window.background-yellow * {
+#ueberwort-window.background-yellow,
+#ueberwort-window.background-yellow * {
   color: #000000;
   background: #ffffbf;
 }
 
-#zhongwen-window.background-yellow .w-hanzi,
-#zhongwen-window.background-yellow .w-hanzi-small {
+#ueberwort-window.background-yellow .w-hanzi,
+#ueberwort-window.background-yellow .w-hanzi-small {
   color: #7070e0;
 }
 
-#zhongwen-window.background-yellow .grammar {
+#ueberwort-window.background-yellow .grammar {
   color: #00008b;
 }
 
-#zhongwen-window.background-yellow .vocab {
+#ueberwort-window.background-yellow .vocab {
   color: #00008b;
 }
-
 
 /* Lightblue Background */
-#zhongwen-window.background-lightblue,
-#zhongwen-window.background-lightblue * {
+#ueberwort-window.background-lightblue,
+#ueberwort-window.background-lightblue * {
   color: #000000;
   background: #e6f4ff;
 }
 
-#zhongwen-window.background-lightblue .w-hanzi,
-#zhongwen-window.background-lightblue .w-hanzi-small {
+#ueberwort-window.background-lightblue .w-hanzi,
+#ueberwort-window.background-lightblue .w-hanzi-small {
   color: #3082bf;
 }
 
-#zhongwen-window.background-lightblue .w-pinyin,
-#zhongwen-window.background-lightblue .w-pinyin-small {
+#ueberwort-window.background-lightblue .w-pinyin,
+#ueberwort-window.background-lightblue .w-pinyin-small {
   color: #00b366;
 }
 
-#zhongwen-window.background-lightblue .grammar {
+#ueberwort-window.background-lightblue .grammar {
   color: #00008b;
 }
 
-#zhongwen-window.background-lightblue .vocab {
+#ueberwort-window.background-lightblue .vocab {
   color: #00008b;
 }
 
 /* Blue Background */
-#zhongwen-window.background-blue,
-#zhongwen-window.background-blue * {
+#ueberwort-window.background-blue,
+#ueberwort-window.background-blue * {
   color: #ffffff;
   background: #5c73b8;
 }
 
-#zhongwen-window.background-blue .w-hanzi,
-#zhongwen-window.background-blue .w-hanzi-small {
+#ueberwort-window.background-blue .w-hanzi,
+#ueberwort-window.background-blue .w-hanzi-small {
   color: #b7e7ff;
 }
 
-#zhongwen-window.background-blue .w-pinyin,
-#zhongwen-window.background-blue .w-pinyin-small {
+#ueberwort-window.background-blue .w-pinyin,
+#ueberwort-window.background-blue .w-pinyin-small {
   color: #c0ffc0;
 }
 
-#zhongwen-window.background-blue .grammar {
+#ueberwort-window.background-blue .grammar {
   color: #add8e6;
 }
 
-#zhongwen-window.background-blue .vocab {
+#ueberwort-window.background-blue .vocab {
   color: #add8e6;
 }
 
 /* Black Background */
-#zhongwen-window.background-black,
-#zhongwen-window.background-black * {
+#ueberwort-window.background-black,
+#ueberwort-window.background-black * {
   color: #ffffff;
   background: #000000;
 }
 
-#zhongwen-window.background-black .w-hanzi,
-#zhongwen-window.background-black .w-hanzi-small {
+#ueberwort-window.background-black .w-hanzi,
+#ueberwort-window.background-black .w-hanzi-small {
   color: #7070e0;
 }
 
-#zhongwen-window.background-black .w-pinyin,
-#zhongwen-window.background-black .w-pinyin-small {
+#ueberwort-window.background-black .w-pinyin,
+#ueberwort-window.background-black .w-pinyin-small {
   color: #20a020;
 }
 
-#zhongwen-window.background-black .grammar {
+#ueberwort-window.background-black .grammar {
   color: #add8e6;
 }
 
-#zhongwen-window.background-black .vocab {
+#ueberwort-window.background-black .vocab {
   color: #add8e6;
 }
 
 /* Standard Tone Colors */
-#zhongwen-window.tonecolor-standard .tone1 {
+#ueberwort-window.tonecolor-standard .tone1 {
   color: #ee363e;
 }
 
-#zhongwen-window.tonecolor-standard .tone2 {
+#ueberwort-window.tonecolor-standard .tone2 {
   color: #f47c36;
 }
 
-#zhongwen-window.tonecolor-standard .tone3 {
+#ueberwort-window.tonecolor-standard .tone3 {
   color: #73bb4f;
 }
 
-#zhongwen-window.tonecolor-standard .tone4 {
+#ueberwort-window.tonecolor-standard .tone4 {
   color: #649cd3;
 }
 
-#zhongwen-window.tonecolor-standard .tone5 {
+#ueberwort-window.tonecolor-standard .tone5 {
   color: #a0a0a0;
 }
 
-
 /* Pleco Tone Colors */
-#zhongwen-window.tonecolor-pleco .tone1 {
+#ueberwort-window.tonecolor-pleco .tone1 {
   color: #e30000;
 }
 
-#zhongwen-window.tonecolor-pleco .tone2 {
+#ueberwort-window.tonecolor-pleco .tone2 {
   color: #02b31c;
 }
 
-#zhongwen-window.tonecolor-pleco .tone3 {
+#ueberwort-window.tonecolor-pleco .tone3 {
   color: #1510f0;
 }
 
-#zhongwen-window.tonecolor-pleco .tone4 {
+#ueberwort-window.tonecolor-pleco .tone4 {
   color: #8900bf;
 }
 
-#zhongwen-window.tonecolor-pleco .tone5 {
+#ueberwort-window.tonecolor-pleco .tone5 {
   color: #777777;
 }
 
-
 /* Hanping Tone Colors */
-#zhongwen-window.tonecolor-hanping .tone1 {
+#ueberwort-window.tonecolor-hanping .tone1 {
   color: #64b4ff;
 }
 
-#zhongwen-window.tonecolor-hanping .tone2 {
+#ueberwort-window.tonecolor-hanping .tone2 {
   color: #30b030;
 }
 
-#zhongwen-window.tonecolor-hanping .tone3 {
+#ueberwort-window.tonecolor-hanping .tone3 {
   color: #f08000;
 }
 
-#zhongwen-window.tonecolor-hanping .tone4 {
+#ueberwort-window.tonecolor-hanping .tone4 {
   color: #d00020;
 }
 
-#zhongwen-window.tonecolor-hanping .tone5 {
+#ueberwort-window.tonecolor-hanping .tone5 {
   color: #a0a0a0;
 }
