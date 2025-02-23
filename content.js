@@ -1,8 +1,12 @@
 /*
- Zhongwen - A Chinese-English Pop-Up Dictionary
- Copyright (C) 2010-2023 Christian Schiller
- https://chrome.google.com/extensions/detail/kkmlkkjojmombglmlpbpapmhcaljjkde
+ Überwort: German - English Popup Dictionary
+ Copyright (C) 2025 Nghi Hua
 
+---
+
+ Originally based on Zhongwen 6.2.0
+ Copyright (C) 2010-2019 Christian Schiller
+ https://chrome.google.com/extensions/detail/kkmlkkjojmombglmlpbpapmhcaljjkde
  ---
 
  Originally based on Rikaikun 0.8
