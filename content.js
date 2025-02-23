@@ -225,8 +225,7 @@ function onKeyDown(keyDown) {
       if (keyDown.altKey) {
         let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://forvo.com/search/%E4%B8%AD%E6%96%87/zh/
-        var forvo = 'https://forvo.com/search/' + sel + '/zh/';
+        var forvo = 'https://forvo.com/search/' + sel + '/de/';
 
         chrome.runtime.sendMessage({
           type: 'open',
@@ -240,13 +239,12 @@ function onKeyDown(keyDown) {
       if (keyDown.altKey) {
         let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://dict.cn/%E7%BF%BB%E8%AF%91
-        let dictcn = 'https://dict.cn/' + sel;
+        let dictcc = 'https://www.dict.cc/?s=' + sel;
 
         chrome.runtime.sendMessage({
           type: 'open',
-          tabType: 'dictcn',
-          url: dictcn,
+          tabType: 'dictcc',
+          url: dictcc,
         });
       }
       break;
@@ -255,13 +253,14 @@ function onKeyDown(keyDown) {
       if (keyDown.altKey) {
         let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://www.iciba.com/%E4%B8%AD%E9%A4%90
-        let iciba = 'https://www.iciba.com/' + sel;
+        let cambridge =
+          'https://dictionary.cambridge.org/spellcheck/german-english/?q=' +
+          sel;
 
         chrome.runtime.sendMessage({
           type: 'open',
           tabType: 'iciba',
-          url: iciba,
+          url: cambridge,
         });
       }
       break;
@@ -288,7 +287,7 @@ function onKeyDown(keyDown) {
         let sel = encodeURIComponent(window.getSelection().toString());
 
         let reverso =
-          'https://context.reverso.net/translation/chinese-english/' + sel;
+          'https://context.reverso.net/translation/german-english/' + sel;
 
         chrome.runtime.sendMessage({
           type: 'open',

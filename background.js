@@ -321,6 +321,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
           wordlist = [];
         }
 
+        console.log('request.entries', request.entries);
+
         for (let i in request.entries) {
           let entry = {};
           entry.timestamp = Date.now();
