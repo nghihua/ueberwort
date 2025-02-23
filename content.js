@@ -824,14 +824,28 @@ function makeHtml(result) {
     });
     html += meaningContainer.outerHTML;
 
+    console.log('parsedResult', parsedResult);
+
+    // Example
+    if (parsedResult.examples) {
+      const examplesContainer = document.createElement('blockquote');
+      examplesContainer.classList.add('w-example');
+      examplesContainer.innerHTML += '<b>Example: </b>';
+      const germanText = parsedResult.examples[0].text;
+      const englishText = parsedResult.examples[0].english;
+      examplesContainer.innerHTML += `<span>${germanText}</span>`;
+      examplesContainer.innerHTML += `<span>${englishText}</span>`;
+      html += examplesContainer.outerHTML;
+    }
+
     // Synonyms
     if (parsedResult.synonyms) {
       const synonymsContainer = document.createElement('div');
-      synonymsContainer.textContent += 'Synonyms: ';
+      synonymsContainer.innerHTML += '<b>Synonyms: </b>';
       parsedResult.synonyms?.split('*').forEach((synonym) => {
         if (!synonym.trim()) return;
         const span = document.createElement('span');
-        span.innerText = synonym + '|';
+        span.innerText = synonym + '   |   ';
         span.classList.add('w-synonym');
         synonymsContainer.appendChild(span);
       });
