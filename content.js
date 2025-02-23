@@ -517,7 +517,6 @@ function processSearchResult(result) {
     highlightMatch(doc, rangeNode, selStartOffset, highlightLength, selEndList);
   }
 
-  console.log('process Search result', result);
   showPopup(makeHtml(result), savedTarget, popX, popY, false);
 }
 
@@ -761,7 +760,6 @@ function makeDiv(input) {
 }
 
 function findNextTextNode(root, previous) {
-  console.log('findNextTextNode');
   if (root === null) {
     return null;
   }
@@ -802,8 +800,6 @@ function makeHtml(result) {
 
   for (let i = 0; i < result.data.length; ++i) {
     const parsedResult = result.data[i];
-    console.log('parsedResult', parsedResult);
-    // if (!entry) continue;
 
     // Word
     const wordClass = 'w-word';

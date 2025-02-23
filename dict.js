@@ -127,16 +127,13 @@ export class GermanDictionary {
       const wordData = words.shift();
       const wordText = wordData.text;
       if (dataMap[wordText]) continue;
-      console.log('wordText', wordText);
 
       let ix = this.cache[wordText];
       if (!ix) {
         ix = GermanDictionary.find(wordText.toLowerCase() + ',', index);
-        console.log('ix', ix);
         if (!ix) {
           if (!wordData.atomic) {
             const splitWords = this.splitWord(wordText).filter((w) => w.trim());
-            console.log('splitWords', [...splitWords]);
             if (splitWords.length > 1) {
               split = true;
             }
@@ -159,8 +156,6 @@ export class GermanDictionary {
         let offset = ix[j];
 
         let dentry = this.getLineFromString(dict, offset);
-
-        console.log('j', j, dentry);
 
         if (count >= maxTrim) {
           entry.more = 1;
