@@ -25,7 +25,7 @@
     "extends": "stylelint-config-recommended"
   },
   "scripts": {
-    "lint": "eslint --fix *.js js/options.js js/wordlist.js js/zhuyin.js",
+    "lint": "eslint --fix *.js js/options.js js/wordlist.js",
     "csslint": "stylelint css/content.css css/wordlist.css"
   }
 }
