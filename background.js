@@ -257,9 +257,18 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
 });
 
 function createTab(url, tabType) {
-  chrome.tabs.create({ url }, (tab) => {
-    tabIDs[tabType] = tab.id;
-  });
+  chrome.tabs.query(
+    {
+      active: true,
+      currentWindow: true,
+    },
+    (tabs) => {
+      let index = tabs[0].index;
+      chrome.tabs.create({ url, index: index + 1 }, (tab) => {
+        tabIDs[tabType] = tab.id;
+      });
+    }
+  );
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
