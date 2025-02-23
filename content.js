@@ -828,13 +828,13 @@ function makeHtml(result) {
 
     // Example
     if (parsedResult.examples) {
+      html += '<div><b>Example: </b></div>';
       const examplesContainer = document.createElement('blockquote');
       examplesContainer.classList.add('w-example');
-      examplesContainer.innerHTML += '<b>Example: </b>';
       const germanText = parsedResult.examples[0].text;
       const englishText = parsedResult.examples[0].english;
-      examplesContainer.innerHTML += `<span>${germanText}</span>`;
-      examplesContainer.innerHTML += `<span>${englishText}</span>`;
+      examplesContainer.innerHTML += `<span class="german">${germanText}</span>`;
+      examplesContainer.innerHTML += `<span class"english">${englishText}</span>`;
       html += examplesContainer.outerHTML;
     }
 
