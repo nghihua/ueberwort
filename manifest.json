@@ -2,9 +2,9 @@
   "manifest_version": 2,
   "name": "Überwort: German - English Dictionary",
   "short_name": "Überwort",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Nghi Hua",
-  "homepage_url": "https://github.com/cschiller/zhongwen",
+  "homepage_url": "https://github.com/nghihua/ueberwort",
   "description": "Great tool for learning German. Includes links to German Grammar Wiki.",
   "icons": {
     "16": "images/ueberwort16.png",

@@ -4,7 +4,7 @@
   "description": "German Pop-Up Dictionary",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cschiller/zhongwen.git"
+    "url": "git+https://github.com/nghihua/ueberwort.git"
   },
   "keywords": [
     "German",
@@ -13,9 +13,9 @@
   "author": "Nghi Hua",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/cschiller/zhongwen/issues"
+    "url": "https://github.com/nghihua/ueberwort/issues"
   },
-  "homepage": "https://github.com/cschiller/zhongwen#readme",
+  "homepage": "https://github.com/nghihua/ueberwort#readme",
   "devDependencies": {
     "eslint": "^8.10.0",
     "stylelint": "^14.5.3",
