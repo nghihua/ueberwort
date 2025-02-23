@@ -38,9 +38,6 @@ function loadVals() {
     `input[name="simpTrad"][value="${simpTrad}"]`
   ).checked = true;
 
-  const zhuyin = localStorage['zhuyin'] || 'no';
-  document.querySelector('#zhuyin').checked = zhuyin === 'yes';
-
   const grammar = localStorage['grammar'] || 'yes';
   document.querySelector('#grammar').checked = grammar !== 'no';
 
@@ -101,12 +98,6 @@ window.addEventListener('load', () => {
       setOption('simpTrad', input.getAttribute('value'))
     );
   });
-
-  document
-    .querySelector('#zhuyin')
-    .addEventListener('change', (event) =>
-      setBooleanOption('zhuyin', event.target.checked)
-    );
 
   document
     .querySelector('#grammar')

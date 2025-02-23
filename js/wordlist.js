@@ -13,8 +13,6 @@
 
 let wordList = localStorage['wordlist'];
 
-let showZhuyin = localStorage['zhuyin'] === 'yes';
-
 const NOTES_COLUMN = 6;
 
 let entries;
@@ -23,7 +21,6 @@ if (wordList) {
   entries.forEach((e) => {
     e.timestamp = e.timestamp || 0;
     e.notes = e.notes || '<i>Edit</i>';
-    e.zhuyin = convert2Zhuyin(e.pinyin);
   });
   // show new entries first
   entries.sort((e1, e2) => e2.timestamp - e1.timestamp);
@@ -54,16 +51,6 @@ function disableButtons() {
   }
 }
 
-function convert2Zhuyin(pinyin) {
-  let zhuyin = [];
-  let a = pinyin.split(/[\s·]+/);
-  for (let i = 0; i < a.length; i++) {
-    let syllable = a[i];
-    zhuyin.push(globalThis.accentedPinyin2Zhuyin(syllable));
-  }
-  return zhuyin.join(' ');
-}
-
 function copyEntriesForSaving(entries) {
   let result = [];
   for (let i = 0; i < entries.length; i++) {
@@ -76,7 +63,6 @@ function copyEntryForSaving(entry) {
   let result = Object.assign({}, entry);
   // don't save these atributes
   delete result.id;
-  delete result.zhuyin;
   if (result.notes === '<i>Edit</i>') {
     delete result.notes;
   }
@@ -96,7 +82,6 @@ $(document).ready(function () {
       { data: 'simplified' },
       { data: 'traditional' },
       { data: 'pinyin' },
-      { data: 'zhuyin', visible: showZhuyin },
       { data: 'definition' },
       { data: 'notes' },
     ],
@@ -153,10 +138,6 @@ $(document).ready(function () {
       content += '\t';
       content += entry.pinyin;
       content += '\t';
-      if (showZhuyin) {
-        content += entry.zhuyin;
-        content += '\t';
-      }
       content += entry.definition;
       content += '\t';
       content += entry.notes
