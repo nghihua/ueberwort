@@ -819,7 +819,7 @@ function makeHtml(result) {
     html += meaningContainer.outerHTML;
 
     // Example
-    if (parsedResult.examples[0]?.english) {
+    if (parsedResult.examples?.[0]?.english) {
       html += '<div><b>Example: </b></div>';
       const examplesContainer = document.createElement('blockquote');
       examplesContainer.classList.add('w-example');
