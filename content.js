@@ -672,7 +672,6 @@ function showPopup(html, elem, x, y, looseWidth) {
 }
 
 function hidePopup() {
-  return;
   let popup = document.getElementById('ueberwort-window');
   if (popup) {
     popup.style.display = 'none';
@@ -818,8 +817,6 @@ function makeHtml(result) {
       meaningContainer.appendChild(li);
     });
     html += meaningContainer.outerHTML;
-
-    console.log('parsedResult', parsedResult);
 
     // Example
     if (parsedResult.examples[0]?.english) {
