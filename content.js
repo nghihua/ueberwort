@@ -208,18 +208,14 @@ function onKeyDown(keyDown) {
 
     case 49: // '1'
       if (keyDown.altKey) {
-        // use the simplified character for linedict lookup
-        let simp = savedSearchResults[0][0];
+        let sel = encodeURIComponent(window.getSelection().toString());
 
-        // https://english.dict.naver.com/english-chinese-dictionary/#/search?query=%E8%AF%8D%E5%85%B8
-        let linedict =
-          'https://english.dict.naver.com/english-chinese-dictionary/#/search?query=' +
-          encodeURIComponent(simp);
+        let duden = 'https://www.duden.de/suchen/dudenonline/' + sel;
 
         chrome.runtime.sendMessage({
           type: 'open',
-          tabType: 'linedict',
-          url: linedict,
+          tabType: 'duden',
+          url: duden,
         });
       }
       break;
@@ -299,16 +295,14 @@ function onKeyDown(keyDown) {
 
     case 55: // '7'
       if (keyDown.altKey) {
-        // use the traditional character for moedict lookup
-        let trad = savedSearchResults[0][1];
-
+        let sel = encodeURIComponent(window.getSelection().toString());
         // https://www.moedict.tw/~%E4%B8%AD%E6%96%87
-        let moedict = 'https://www.moedict.tw/~' + encodeURIComponent(trad);
+        let pons = 'https://en.pons.com/translate-2/german-english/' + sel;
 
         chrome.runtime.sendMessage({
           type: 'open',
-          tabType: 'moedict',
-          url: moedict,
+          tabType: 'pons',
+          url: pons,
         });
       }
       break;
