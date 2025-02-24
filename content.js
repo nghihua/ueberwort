@@ -672,6 +672,7 @@ function showPopup(html, elem, x, y, looseWidth) {
 }
 
 function hidePopup() {
+  return;
   let popup = document.getElementById('ueberwort-window');
   if (popup) {
     popup.style.display = 'none';
@@ -821,7 +822,7 @@ function makeHtml(result) {
     console.log('parsedResult', parsedResult);
 
     // Example
-    if (parsedResult.examples) {
+    if (parsedResult.examples[0]?.english) {
       html += '<div><b>Example: </b></div>';
       const examplesContainer = document.createElement('blockquote');
       examplesContainer.classList.add('w-example');

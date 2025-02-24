@@ -1,6 +1,16 @@
 /* Generic Styles */
 #ueberwort-window,
 #ueberwort-window * {
+  --blue-background: #acc8e5;
+  --blue-text: #112a46;
+  --pink-background: #ffafcc;
+  --pink-text: #112a46;
+  --purple: #7070e0;
+  --yellow-background: #fefae0;
+  --yellow-text: #112a46;
+  --white: #ffffff;
+  --black: #000000;
+  --stone: #555555;
   width: auto;
   height: auto;
   background: transparent;
@@ -16,22 +26,58 @@
   word-spacing: normal;
   font-weight: normal;
   font-size: 12px;
-  font-family: Tahoma, Geneva, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   visibility: visible;
   line-height: initial;
 }
 
+/* Color themes */
+/* Yellow Background */
+#ueberwort-window.background-yellow,
+#ueberwort-window.background-yellow * {
+  color: var(--yellow-text);
+  border-color: var(--yellow-text);
+  background: var(--yellow-background);
+}
+
+/* Blue Background */
+#ueberwort-window.background-blue,
+#ueberwort-window.background-blue * {
+  color: var(--blue-text);
+  border-color: var(--blue-text);
+  background: var(--blue-background);
+}
+
+/* Pink Background */
+#ueberwort-window.background-pink,
+#ueberwort-window.background-pink * {
+  color: var(--pink-text);
+  border-color: var(--pink-text);
+  background: var(--pink-background);
+}
+
+/* Black Background */
+#ueberwort-window.background-black,
+#ueberwort-window.background-black * {
+  color: var(--white);
+  border-color: var(--white);
+  background: var(--black);
+}
+
+/* Others */
 #ueberwort-window {
   position: absolute;
   z-index: 999999999;
   border: 1px solid #d0d0d0 !important;
   padding: 4px;
-  background: #e6f4ff;
+  background: var(--cotton);
   top: 5px;
   left: 5px;
   min-width: 100px;
   border-radius: 5px;
-  box-shadow: 10px 10px 5px -5px #999999;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 12px;
 }
 
 #ueberwort-window .w-word {
@@ -53,18 +99,16 @@
   width: 100%;
   font-family: Open Sans;
   font-style: italic;
-  color: #555555;
+  color: var(--stone);
   padding: 0.5em 30px 0.5em 50px;
-  border-left: 8px solid #78c0a8;
+  border-left: 8px solid;
   line-height: 1.6;
   position: relative;
-  background: #ededed;
 }
 
 #ueberwort-window .w-example::before {
   font-family: Arial;
   content: '\201C';
-  color: #78c0a8;
   font-size: 4em;
   position: absolute;
   left: 10px;
@@ -83,48 +127,4 @@
 
 #ueberwort-window .w-example .german {
   font-style: italic;
-}
-
-/* Yellow Background */
-#ueberwort-window.background-yellow,
-#ueberwort-window.background-yellow * {
-  color: #000000;
-  background: #ffffbf;
-}
-
-#ueberwort-window.background-yellow .w-word {
-  color: #7070e0;
-}
-
-/* Lightblue Background */
-#ueberwort-window.background-lightblue,
-#ueberwort-window.background-lightblue * {
-  color: #000000;
-  background: #e6f4ff;
-}
-
-#ueberwort-window.background-lightblue .w-word {
-  color: #3082bf;
-}
-
-/* Blue Background */
-#ueberwort-window.background-blue,
-#ueberwort-window.background-blue * {
-  color: #ffffff;
-  background: #5c73b8;
-}
-
-#ueberwort-window.background-blue .w-word {
-  color: #b7e7ff;
-}
-
-/* Black Background */
-#ueberwort-window.background-black,
-#ueberwort-window.background-black * {
-  color: #ffffff;
-  background: #000000;
-}
-
-#ueberwort-window.background-black .w-word {
-  color: #7070e0;
 }
