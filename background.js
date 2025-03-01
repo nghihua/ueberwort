@@ -59,7 +59,11 @@ import { GermanDictionary } from './dict.js';
 //   justification: 'testing the offscreen API',
 // });
 
-let isEnabled = chrome.storage['enabled'] === '1';
+let isEnabled = false;
+
+chrome.storage.sync.get('enabled', function (data) {
+  isEnabled = data.enabled === '1';
+});
 
 let isActivated = false;
 

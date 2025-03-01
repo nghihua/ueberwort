@@ -31,7 +31,7 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "permissions": ["contextMenus", "tabs", "offscreen", "storage"],
+  "permissions": ["contextMenus", "tabs", "storage"],
   "commands": {
     "_execute_browser_action": {
       "description": "Enable/Disable Überwort"
