@@ -577,7 +577,7 @@ function showPopup(html, elem, x, y, looseWidth) {
   popup.style.width = 'auto';
   popup.style.height = 'auto';
   popup.style.maxWidth = looseWidth ? '' : '600px';
-  popup.className = `background-${config.css}`;
+  popup.className = `background-${config.popupcolor}`;
 
   $(popup).html(html);
 
@@ -911,7 +911,9 @@ chrome.runtime.onMessage.addListener(function (request) {
   switch (request.type) {
     case 'enable':
       enableTab();
-      config = request.config;
+      chrome.storage.sync.get().then((storageItems) => {
+        config = { popupcolor: 'yellow', fontSize: 'small', ...storageItems };
+      });
       break;
     case 'disable':
       disableTab();

@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Überwort: German - English Dictionary",
   "short_name": "Überwort",
   "version": "1.0.0",
@@ -11,12 +11,13 @@
     "48": "images/ueberwort48.png",
     "128": "images/ueberwort128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "images/ueberwort48.png",
     "default_title": "Überwort German Popup Dictionary"
   },
   "background": {
-    "page": "background.html"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
@@ -30,11 +31,16 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "permissions": ["contextMenus", "tabs"],
+  "permissions": ["contextMenus", "tabs", "offscreen", "storage"],
   "commands": {
     "_execute_browser_action": {
       "description": "Enable/Disable Überwort"
     }
   },
-  "web_accessible_resources": ["css/*", "js/*", "images/*"]
+  "web_accessible_resources": [
+    {
+      "resources": ["css/*", "js/*", "images/*"],
+      "matches": ["*://*/*"]
+    }
+  ]
 }

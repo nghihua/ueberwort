@@ -12,36 +12,38 @@
 
 'use strict';
 
-function loadVals() {
-  const popupColor = localStorage['popupcolor'] || 'yellow';
+async function loadVals() {
+  const storageItems = await chrome.storage.sync.get();
+
+  const popupColor = storageItems['popupcolor'] || 'yellow';
   document.querySelector(
     `input[name="popupColor"][value="${popupColor}"]`
   ).checked = true;
 
-  const fontSize = localStorage['fontSize'] || 'small';
+  const fontSize = storageItems['fontSize'] || 'small';
   document.querySelector(
     `input[name="fontSize"][value="${fontSize}"]`
   ).checked = true;
 
-  const grammar = localStorage['grammar'] || 'yes';
+  const grammar = storageItems['grammar'] || 'yes';
   document.querySelector('#grammar').checked = grammar !== 'no';
 
-  const vocab = localStorage['vocab'] || 'yes';
+  const vocab = storageItems['vocab'] || 'yes';
   document.querySelector('#vocab').checked = vocab !== 'no';
 
-  const saveToWordList = localStorage['saveToWordList'] || 'allEntries';
+  const saveToWordList = storageItems['saveToWordList'] || 'allEntries';
   document.querySelector(
     `input[name="saveToWordList"][value="${saveToWordList}"]`
   ).checked = true;
 }
 
 function setPopupColor(popupColor) {
-  localStorage['popupcolor'] = popupColor;
+  chrome.storage.sync.set({ popupcolor: popupColor });
   chrome.extension.getBackgroundPage().ueberwortOptions.css = popupColor;
 }
 
 function setOption(option, value) {
-  localStorage[option] = value;
+  chrome.storage.sync.set({ [option]: value });
   chrome.extension.getBackgroundPage().ueberwortOptions[option] = value;
 }
 

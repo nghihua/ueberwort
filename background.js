@@ -53,7 +53,13 @@
 
 import { GermanDictionary } from './dict.js';
 
-let isEnabled = localStorage['enabled'] === '1';
+// chrome.offscreen.createDocument({
+//   url: chrome.runtime.getURL('offscreen.html'),
+//   reasons: ['CLIPBOARD'],
+//   justification: 'testing the offscreen API',
+// });
+
+let isEnabled = chrome.storage['enabled'] === '1';
 
 let isActivated = false;
 
@@ -61,17 +67,12 @@ let tabIDs = {};
 
 let dict;
 
-let ueberwortOptions = (window.ueberwortOptions = {
-  css: localStorage['popupcolor'] || 'yellow',
-  fontSize: localStorage['fontSize'] || 'small',
-});
-
 function activateExtension(tabId, showHelp) {
   isActivated = true;
 
   isEnabled = true;
   // values in localStorage are always strings
-  localStorage['enabled'] = '1';
+  chrome.storage.sync.set({ enabled: '1' });
 
   if (!dict) {
     loadDictionary().then((r) => (dict = r));
@@ -79,7 +80,6 @@ function activateExtension(tabId, showHelp) {
 
   chrome.tabs.sendMessage(tabId, {
     type: 'enable',
-    config: ueberwortOptions,
   });
 
   if (showHelp) {
@@ -88,46 +88,50 @@ function activateExtension(tabId, showHelp) {
     });
   }
 
-  chrome.browserAction.setBadgeBackgroundColor({
+  chrome.action.setBadgeBackgroundColor({
     color: [255, 0, 0, 255],
   });
 
-  chrome.browserAction.setBadgeText({
+  chrome.action.setBadgeText({
     text: 'On',
   });
 
+  // TODO: implement word list
+  // chrome.contextMenus.create({
+  //   title: 'Open word list',
+  //   onclick: function () {
+  //     let url = '/wordlist.html';
+  //     let tabID = tabIDs['wordlist'];
+  //     if (tabID) {
+  //       chrome.tabs.get(tabID, function (tab) {
+  //         if (tab && tab.url && tab.url.endsWith('wordlist.html')) {
+  //           chrome.tabs.update(tabID, {
+  //             active: true,
+  //           });
+  //         } else {
+  //           chrome.tabs.create(
+  //             {
+  //               url: url,
+  //             },
+  //             function (tab) {
+  //               tabIDs['wordlist'] = tab.id;
+  //             }
+  //           );
+  //         }
+  //       });
+  //     } else {
+  //       chrome.tabs.create({ url: url }, function (tab) {
+  //         tabIDs['wordlist'] = tab.id;
+  //       });
+  //     }
+  //   },
+  // });
   chrome.contextMenus.create({
-    title: 'Open word list',
-    onclick: function () {
-      let url = '/wordlist.html';
-      let tabID = tabIDs['wordlist'];
-      if (tabID) {
-        chrome.tabs.get(tabID, function (tab) {
-          if (tab && tab.url && tab.url.endsWith('wordlist.html')) {
-            chrome.tabs.update(tabID, {
-              active: true,
-            });
-          } else {
-            chrome.tabs.create(
-              {
-                url: url,
-              },
-              function (tab) {
-                tabIDs['wordlist'] = tab.id;
-              }
-            );
-          }
-        });
-      } else {
-        chrome.tabs.create({ url: url }, function (tab) {
-          tabIDs['wordlist'] = tab.id;
-        });
-      }
-    },
-  });
-  chrome.contextMenus.create({
+    id: 'help',
     title: 'Show help in new tab',
-    onclick: function () {
+  });
+  chrome.contextMenus.onClicked.addListener(function (info, tab) {
+    if (info.menuItemId === 'help') {
       let url = '/help.html';
       let tabID = tabIDs['help'];
       if (tabID) {
@@ -152,7 +156,7 @@ function activateExtension(tabId, showHelp) {
           tabIDs['help'] = tab.id;
         });
       }
-    },
+    }
   });
 }
 
@@ -178,18 +182,13 @@ function deactivateExtension() {
   isActivated = false;
 
   isEnabled = false;
-  // values in localStorage are always strings
-  localStorage['enabled'] = '0';
+  chrome.storage.sync.set({ enabled: '0' });
 
   dict = undefined;
 
-  chrome.browserAction.setBadgeBackgroundColor({
-    color: [0, 0, 0, 0],
-  });
+  chrome.action.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
 
-  chrome.browserAction.setBadgeText({
-    text: '',
-  });
+  chrome.action.setBadgeText({ text: '' });
 
   // Send a disable message to all tabs in all windows.
   chrome.windows.getAll({ populate: true }, function (windows) {
@@ -222,7 +221,6 @@ function enableTab(tabId) {
 
     chrome.tabs.sendMessage(tabId, {
       type: 'enable',
-      config: ueberwortOptions,
     });
   }
 }
@@ -238,7 +236,7 @@ function search(text) {
   return entry;
 }
 
-chrome.browserAction.onClicked.addListener(activateExtensionToggle);
+chrome.action.onClicked.addListener(activateExtensionToggle);
 
 chrome.tabs.onActivated.addListener((activeInfo) => {
   if (activeInfo.tabId === tabIDs['wordlist']) {
@@ -319,35 +317,30 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
     case 'add':
       {
-        let json = localStorage['wordlist'];
-
-        let saveFirstEntryOnly =
-          localStorage['saveToWordList'] === 'firstEntryOnly';
-
-        let wordlist;
-        if (json) {
-          wordlist = JSON.parse(json);
-        } else {
-          wordlist = [];
-        }
-
-        for (let i in request.entries) {
-          let entry = {};
-          entry.timestamp = Date.now();
-          entry.simplified = request.entries[i].simplified;
-          entry.traditional = request.entries[i].traditional;
-          entry.pinyin = request.entries[i].pinyin;
-          entry.definition = request.entries[i].definition;
-
-          wordlist.push(entry);
-
-          if (saveFirstEntryOnly) {
-            break;
-          }
-        }
-        localStorage['wordlist'] = JSON.stringify(wordlist);
-
-        tabID = tabIDs['wordlist'];
+        // TODO: implement this
+        // let json = localStorage['wordlist'];
+        // let saveFirstEntryOnly =
+        //   localStorage['saveToWordList'] === 'firstEntryOnly';
+        // let wordlist;
+        // if (json) {
+        //   wordlist = JSON.parse(json);
+        // } else {
+        //   wordlist = [];
+        // }
+        // for (let i in request.entries) {
+        //   let entry = {};
+        //   entry.timestamp = Date.now();
+        //   entry.simplified = request.entries[i].simplified;
+        //   entry.traditional = request.entries[i].traditional;
+        //   entry.pinyin = request.entries[i].pinyin;
+        //   entry.definition = request.entries[i].definition;
+        //   wordlist.push(entry);
+        //   if (saveFirstEntryOnly) {
+        //     break;
+        //   }
+        // }
+        // localStorage['wordlist'] = JSON.stringify(wordlist);
+        // tabID = tabIDs['wordlist'];
       }
       break;
   }
