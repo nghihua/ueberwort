@@ -2,10 +2,10 @@
   "manifest_version": 3,
   "name": "Überwort: German - English Dictionary",
   "short_name": "Überwort",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nghi Hua",
   "homepage_url": "https://github.com/nghihua/ueberwort",
-  "description": "Great tool for learning German. Includes links to German Grammar Wiki.",
+  "description": "Great tool for learning German.",
   "icons": {
     "16": "images/ueberwort16.png",
     "48": "images/ueberwort48.png",
