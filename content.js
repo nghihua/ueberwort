@@ -818,18 +818,6 @@ function makeHtml(result) {
     });
     html += meaningContainer.outerHTML;
 
-    // Example
-    if (parsedResult.examples?.[0]?.english) {
-      html += '<div><b>Example: </b></div>';
-      const examplesContainer = document.createElement('blockquote');
-      examplesContainer.classList.add('w-example');
-      const germanText = parsedResult.examples[0].text;
-      const englishText = parsedResult.examples[0].english;
-      examplesContainer.innerHTML += `<span class="german">${germanText}</span>`;
-      examplesContainer.innerHTML += `<span class"english">${englishText}</span>`;
-      html += examplesContainer.outerHTML;
-    }
-
     // Synonyms
     if (parsedResult.synonyms) {
       const synonymsContainer = document.createElement('div');

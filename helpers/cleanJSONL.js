@@ -59,12 +59,9 @@ async function cleanJsonl(inputFile, outputFile) {
       delete json.derived;
 
       if (json.synonyms) {
-        json.synonyms = json.synonyms
-              .map((synonym) => synonym.word)
-              .join('*');
+        json.synonyms = json.synonyms.map((synonym) => synonym.word).join('*');
       }
 
-      json.examples = [];
       json.meaning = '';
       json.audio = json.sounds?.[0]?.mp3_url ?? json.sounds?.[0]?.ogg_url ?? '';
       json.expansion = json.head_templates?.[0].expansion;
@@ -88,10 +85,6 @@ async function cleanJsonl(inputFile, outputFile) {
           delete sense.topics;
           delete sense.links;
 
-          if (sense.examples && !json.examples.length) {
-            json.examples.push(sense.examples[0]);
-          }
-
           if (sense.synonyms?.length > 0) {
             json.synonyms = sense.synonyms
               .map((synonym) => synonym.word)
@@ -105,9 +98,13 @@ async function cleanJsonl(inputFile, outputFile) {
             json.form_of = sense.form_of[0].word;
           }
 
-          const glosses = sense.raw_glosses ?? sense.glosses ?? [];
+          // only include meaning from the first sense
+          // to avoid duplicates
+          if (!json.meaning) {
+            const glosses = sense.raw_glosses ?? sense.glosses ?? [];
 
-          json.meaning += `*${glosses.join('*')}*`;
+            json.meaning += `*${glosses.join('*')}*`;
+          }
         });
       }
 
@@ -135,6 +132,6 @@ async function cleanJsonl(inputFile, outputFile) {
   console.log(`Cleaned JSONL file written to '${outputFile}'`);
 }
 
-const inputFile = '../data/german.jsonl'; // Change this to your input file name
+const inputFile = '../../german.jsonl'; // Change this to your input file name
 const outputFile = '../data/cleaned_german.jsonl';
 cleanJsonl(inputFile, outputFile);
