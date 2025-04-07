@@ -151,15 +151,18 @@ export class GermanDictionary {
           continue;
         }
 
-        if (!wordData.reverse && wordText.length < word.length) {
-          words.unshift({
-            text: word.slice(word.indexOf(wordText) + wordText.length),
-            atomic: false,
-            reverse: true,
-          });
-        }
         ix = ix.split(',');
         this.cache[wordText] = ix;
+      }
+
+      // if we found a word after cutting down character from the end
+      // we need to check the remaining part (the part just being cut down) to see if there's another part of the word
+      if (!wordData.reverse && wordText.length < word.length) {
+        words.unshift({
+          text: word.slice(word.indexOf(wordText) + wordText.length),
+          atomic: false,
+          reverse: true,
+        });
       }
 
       let parsedDEntry = null;
