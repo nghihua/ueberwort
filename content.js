@@ -862,7 +862,7 @@ function parse(s) {
 }
 
 let miniHelp = `
-    <span style="font-weight: bold;">Überwort Chinese-English Dictionary</span><br><br>
+    <span style="font-weight: bold;">Überwort German-English Dictionary</span><br><br>
     <p>Keyboard shortcuts:<p>
     <table style="margin: 10px;" cellspacing=5 cellpadding=5>
     <tr><td><b>n&nbsp;:</b></td><td>&nbsp;Next word</td></tr>
